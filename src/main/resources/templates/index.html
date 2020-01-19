@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>index Title</title>
+    <script src="/lib/Chart.js"></script>
+    <script src="/lib/stomp.js"></script>
+    <script src="/lib/sockjs.js"></script>
+    <script src="/lib/jquery-3.1.1.min.js"></script>
+    <script src="/lib/bootstrap-switch.js"></script>
+    <script src="/app/web-socket-controller.js"></script>
+</head>
+<body>
+<h1>
+    THIS IS BODY OF INDEX PAGE!<br/>
+    <span th:text="'LOCAL PORT IS '+ ${port}"></span><br/>
+    <span th:text="'CONTENT IS '+ ${content}"></span><br/>
+</h1>
+<div id="webSocket">
+    WebSocket content
+</div>
+<br/>
+<div>
+    <button id="sendButton" type="button">send msg</button>
+</div>
+<table border="2" title="doctor list">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>NAME</td>
+        <td>GENDER</td>
+        <td>RANK</td>
+        <td>AGE</td>
+        <td>CATE</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="doctor:${doctorList}">
+        <td th:text="${doctor.id}">1</td>
+        <td th:text="${doctor.name}">1</td>
+        <td th:text="${doctor.gender}">1</td>
+        <td th:text="${doctor.rank}">1</td>
+        <td th:text="${doctor.age}">1</td>
+        <td th:text="${doctor.category}">1</td>
+        <td><a th:href="@{'/TEST/detail/'+${doctor.id}}" th:text="${doctor.id}"></a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
